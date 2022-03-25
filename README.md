@@ -3,6 +3,8 @@
 - localStorage と Redux の状態を同期させることでデータの永続化が可能にしています
 - Redux については [docs/redux.md](/docs/redux.md) を確認してください
 
+### Packages
+
 - [Next.js](https://nextjs.org/) v12.1.0
 - TypeScript v4.6.3
 - [Redux Toolkit](https://redux-toolkit.js.org/) v1.8.0
