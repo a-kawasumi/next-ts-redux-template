@@ -24,6 +24,14 @@
         "namedComponents": "function-declaration",
         "unnamedComponents": "function-expression"
       }
-    ]
+    ],
+    // default exportしなくてよい
+    "import/prefer-default-export": "off",
+    // 拡張子のlint無効
+    "import/extensions": ["error", "never"],
+    // dependenciesのlint無効
+    "import/no-extraneous-dependencies": "off",
+    // next/linkを使うのでaタグのvalidは無効
+    "jsx-a11y/anchor-is-valid": "off"
   }
 }
