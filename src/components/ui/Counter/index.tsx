@@ -1,11 +1,10 @@
 import React from "react";
-import { RootState } from "~/store";
-import { useSelector, useDispatch } from "react-redux";
+import { useAppSelector, useAppDispatch } from "~/store/hooks";
 import { decrement, increment } from "~/store/counter/counterSlice";
 
 export const Counter: React.VFC = () => {
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
+  const count = useAppSelector((state) => state.counter.value);
+  const dispatch = useAppDispatch();
 
   return (
     <div>
