@@ -1,7 +1,10 @@
-import "~/styles/globals.css";
-import type { AppProps } from "next/app";
-import { store } from "~/app/store";
-import { Provider } from "react-redux";
+import '~/styles/globals.css';
+import type { AppProps } from 'next/app';
+import { setupStore } from '~/app/store';
+import { Provider } from 'react-redux';
+import { hydrateStore } from '~/app/middleware/localStorageMiddleware';
+
+const store = setupStore(hydrateStore());
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

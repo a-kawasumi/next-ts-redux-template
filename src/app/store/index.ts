@@ -1,17 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { pokemonApi } from "~/services/sample";
-import counterReducer from "./counter/counterSlice";
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import { pokemonApi } from '~/services/sample';
+import type { PreloadedState } from '@reduxjs/toolkit';
+import { localStorageMiddleware } from '~/app/middleware/localStorageMiddleware';
+import counterReducer from './counter/counterSlice';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    [pokemonApi.reducerPath]: pokemonApi.reducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(pokemonApi.middleware),
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  [pokemonApi.reducerPath]: pokemonApi.reducer,
 });
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
+
+export const setupStore = (preloadedState?: PreloadedState<RootState>) =>
+  configureStore({
+    reducer: rootReducer,
+    preloadedState,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware().concat(pokemonApi.middleware).concat(localStorageMiddleware),
+  });
+
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore['dispatch'];
