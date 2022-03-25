@@ -1,3 +1,29 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "eslint:recommended",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    "prettier"
+  ],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    // v17以降はimport react from reactが不要
+    "react/react-in-jsx-scope": "off",
+    // tsxを有効にする
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".tsx", "tsx"] }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": [
+      "off",
+      {
+        "namedComponents": "function-declaration",
+        "unnamedComponents": "function-expression"
+      }
+    ]
+  }
 }
