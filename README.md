@@ -1,10 +1,13 @@
 # Next.js + TypeScript + Redux Template
 
-see [docs/redux.md](/docs/redux.md) about redux.
+- localStorage と Redux の状態を同期させることでデータの永続化が可能にしています
+- Redux については [docs/redux.md](/docs/redux.md) を確認してください
 
 - [Next.js](https://nextjs.org/) v12.1.0
 - TypeScript v4.6.3
 - [Redux Toolkit](https://redux-toolkit.js.org/) v1.8.0
+- jest v27.5.1
+- husky v>=6
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
